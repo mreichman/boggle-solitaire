@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.editText) EditText mEditText;
     @Bind(R.id.button) Button mSubmit;
     @Bind(R.id.timer) TextView mTimer;
+    @Bind(R.id.scramble) Button mScramble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +93,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast sorry = Toast.makeText(context, text, duration);
                     sorry.show();
                 }
+            }
+        });
+
+        mScramble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shuffle(randomLetterArray);
+                StringBuilder builder2 = new StringBuilder();
+                for(String s : randomLetterArray) {
+                    builder2.append(s);
+                }
+                String randomLetterString = builder2.toString();
+                mRandomLetters.setText(randomLetterString);
             }
         });
     }

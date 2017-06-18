@@ -43,4 +43,17 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:text="Timer" />
+
+    <Button
+        android:id="@+id/scramble"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginBottom="50dp"
+        android:text="Scramble" />
+
 </RelativeLayout>
