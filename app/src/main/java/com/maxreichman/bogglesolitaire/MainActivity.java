@@ -1,6 +1,8 @@
 package com.maxreichman.bogglesolitaire;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,14 +30,26 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.randomLettersTextView) TextView mRandomLetters;
     @Bind(R.id.editText) EditText mEditText;
     @Bind(R.id.button) Button mSubmit;
+    @Bind(R.id.timer) TextView mTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final ArrayList<String> results = new ArrayList();
+        new CountDownTimer(60000, 1000) {
+            public void onTick(long millisUntilFinished) {
+                mTimer.setText("seconds remaining: " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
+                intent.putExtra("results", results.toString());
+                startActivity(intent);
+            }
+        }.start();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         final ArrayList<String> randomLetterArray = new ArrayList<String>();
-        final ArrayList<String> results = new ArrayList();
         for(int i = 0; i < 2; i++) {
             int randomNumber = (int )(Math.random() * 5);
             randomLetterArray.add(vowels[randomNumber]);
@@ -56,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
-                int duration = Toast.LENGTH_LONG;
+                int duration = Toast.LENGTH_SHORT;
                 String enteredWord = mEditText.getText().toString().toUpperCase();
                 String[] enteredWordArray;
                 enteredWordArray = enteredWord.split("");

@@ -11,10 +11,10 @@
         android:id="@+id/randomLettersTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:text="ZZZZZZZZ"
+        android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:text="ZZZZZZZZ" />
+        android:layout_marginBottom="68dp" />
 
     <EditText
         android:id="@+id/editText"
@@ -34,4 +34,13 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="93dp" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp"
+        android:text="Timer" />
 </RelativeLayout>
