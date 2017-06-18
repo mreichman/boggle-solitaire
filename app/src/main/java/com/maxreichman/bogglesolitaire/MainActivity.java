@@ -60,17 +60,15 @@ public class MainActivity extends AppCompatActivity {
                 String enteredWord = mEditText.getText().toString().toUpperCase();
                 String[] enteredWordArray;
                 enteredWordArray = enteredWord.split("");
-                Boolean isValid = true;
+                Integer counter = 8;
                 for(String enteredLetter : enteredWordArray) {
                     for(String randomLetter : randomLetterArray2) {
                         if (enteredLetter.equals(randomLetter)) {
-                            isValid = true;
-                        } else {
-                            isValid = false;
+                            counter--;
                         }
                     }
                 }
-                if (isValid) {
+                if (counter < 6) {
                     results.add(enteredWord);
                     CharSequence text = "Great Job!";
                     Toast great = Toast.makeText(context, text, duration);
