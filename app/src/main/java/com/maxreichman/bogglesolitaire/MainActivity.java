@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
             int randomNumber = (int )(Math.random() * 19);
             randomLetterArray.add(consonants[randomNumber]);
         }
-        final ArrayList<String> randomLetterArray2 = randomLetterArray;
         shuffle(randomLetterArray);
         StringBuilder builder = new StringBuilder();
         for(String s : randomLetterArray) {
@@ -71,19 +70,30 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Context context = getApplicationContext();
+                final ArrayList<String> randomLetterArray2 = new ArrayList<>();
+                for(int i = 0; i < 8; i++) {
+                    randomLetterArray2.add(randomLetterArray.get(i));
+                }
                 int duration = Toast.LENGTH_SHORT;
                 String enteredWord = mEditText.getText().toString().toUpperCase();
+                int enteredWordLength = enteredWord.length();
                 String[] enteredWordArray;
                 enteredWordArray = enteredWord.split("");
-                Integer counter = 8;
+                Integer counter = 0;
+                Boolean isValidWord = true;
                 for(String enteredLetter : enteredWordArray) {
                     for(String randomLetter : randomLetterArray2) {
                         if (enteredLetter.equals(randomLetter)) {
-                            counter--;
+                            counter++;
+                            randomLetterArray2.remove(randomLetter);
+                            break;
                         }
                     }
                 }
-                if (counter < 6) {
+                if (counter != enteredWordLength) {
+                    isValidWord = false;
+                }
+                if (isValidWord == true) {
                     results.add(enteredWord);
                     CharSequence text = "Great Job!";
                     Toast great = Toast.makeText(context, text, duration);
@@ -92,6 +102,9 @@ public class MainActivity extends AppCompatActivity {
                     CharSequence text = "Sorry, the word you entered is not valid";
                     Toast sorry = Toast.makeText(context, text, duration);
                     sorry.show();
+                }
+                for(int i = 0; i < 8; i++) {
+                    randomLetterArray2.add(randomLetterArray.get(i));
                 }
             }
         });
