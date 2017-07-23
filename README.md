@@ -6,7 +6,7 @@
 
 ## Description
 
-Race against the clock to make as many words as you can in this solo version of the game Boggle. You are given 8 random letters from which to form as many words as you can in a minute. When time is up, you will see how many words you made.
+Race against the clock to make as many words as you can in this solo version of the game Boggle. You are given 12 random letters from which to form as many words as you can in a minute. When time is up, you will see how many words you made.
 
 ## Setup/Installation Requirements using Android Studio
 
