@@ -9,4 +9,14 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Results" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="76dp"
+        android:text="Results"
+        android:textSize="16sp" />
 </RelativeLayout>

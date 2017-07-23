@@ -11,10 +11,11 @@
         android:id="@+id/randomLettersTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ZZZZZZZZ"
-        android:layout_above="@+id/editText"
+        android:layout_above="@+id/scramble"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="68dp" />
+        android:layout_marginBottom="44dp"
+        android:text="ZZZZZZ\nZZZZZZ"
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/editText"
@@ -22,9 +23,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
+        android:layout_marginBottom="20dp"
         android:layout_above="@+id/button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="112dp" />
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:id="@+id/button"
@@ -32,8 +33,11 @@
         android:layout_height="wrap_content"
         android:text="Submit"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="93dp" />
+        android:layout_marginBottom="93dp"
+        android:layout_alignRight="@+id/editText"
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignLeft="@+id/editText"
+        android:layout_alignStart="@+id/editText" />
 
     <TextView
         android:id="@+id/timer"
@@ -48,12 +52,9 @@
         android:id="@+id/scramble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignStart="@+id/editText"
-        android:layout_marginBottom="50dp"
-        android:text="Scramble" />
+        android:layout_marginBottom="57dp"
+        android:text="Scramble"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

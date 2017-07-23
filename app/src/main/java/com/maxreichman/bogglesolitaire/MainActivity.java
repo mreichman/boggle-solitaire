@@ -51,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         final ArrayList<String> randomLetterArray = new ArrayList<String>();
-        for(int i = 0; i < 2; i++) {
+        for(int i = 0; i < 5; i++) {
             int randomNumber = (int )(Math.random() * 5);
             randomLetterArray.add(vowels[randomNumber]);
         }
-        for(int i = 0; i < 6; i++) {
+        for(int i = 0; i < 7; i++) {
             int randomNumber = (int )(Math.random() * 19);
             randomLetterArray.add(consonants[randomNumber]);
         }
@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         for(String s : randomLetterArray) {
             builder.append(s);
         }
+        builder.insert(6, "\n");
         String randomLetterString = builder.toString();
         mRandomLetters.setText(randomLetterString);
         mSubmit.setOnClickListener(new View.OnClickListener() {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Context context = getApplicationContext();
                 final ArrayList<String> randomLetterArray2 = new ArrayList<>();
-                for(int i = 0; i < 8; i++) {
+                for(int i = 0; i < 12; i++) {
                     randomLetterArray2.add(randomLetterArray.get(i));
                 }
                 int duration = Toast.LENGTH_SHORT;
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast sorry = Toast.makeText(context, text, duration);
                     sorry.show();
                 }
-                for(int i = 0; i < 8; i++) {
+                for(int i = 0; i < 12; i++) {
                     randomLetterArray2.add(randomLetterArray.get(i));
                 }
             }
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 for(String s : randomLetterArray) {
                     builder2.append(s);
                 }
+                builder2.insert(6, "\n");
                 String randomLetterString = builder2.toString();
                 mRandomLetters.setText(randomLetterString);
             }
