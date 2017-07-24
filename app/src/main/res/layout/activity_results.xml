@@ -19,4 +19,13 @@
         android:layout_marginTop="76dp"
         android:text="Results"
         android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/finalScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00"
+        android:layout_above="@+id/results"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="28dp" />
 </RelativeLayout>

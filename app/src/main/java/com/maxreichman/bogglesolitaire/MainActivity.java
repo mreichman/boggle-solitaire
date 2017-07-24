@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.button) Button mSubmit;
     @Bind(R.id.timer) TextView mTimer;
     @Bind(R.id.scramble) Button mScramble;
+    @Bind(R.id.score) TextView mScore;
+    Integer mCurrentScore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onFinish() {
                 Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
                 intent.putExtra("results", results.toString());
+                intent.putExtra("score", mCurrentScore.toString());
                 startActivity(intent);
             }
         }.start();
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mScore.setText(mCurrentScore.toString());
         final ArrayList<String> randomLetterArray = new ArrayList<String>();
         for(int i = 0; i < 5; i++) {
             int randomNumber = (int )(Math.random() * 5);
@@ -64,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
         for(String s : randomLetterArray) {
             builder.append(s);
         }
-        builder.insert(6, "\n");
+        builder.insert(4, "\n");
+        builder.insert(9, "\n");
         String randomLetterString = builder.toString();
         mRandomLetters.setText(randomLetterString);
         mSubmit.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 String[] enteredWordArray;
                 enteredWordArray = enteredWord.split("");
                 Integer counter = 0;
-                Boolean isValidWord = true;
+                String isValidWord = "valid";
                 for(String enteredLetter : enteredWordArray) {
                     for(String randomLetter : randomLetterArray2) {
                         if (enteredLetter.equals(randomLetter)) {
@@ -92,13 +97,22 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 if (counter != enteredWordLength) {
-                    isValidWord = false;
+                    isValidWord = "notValid";
                 }
-                if (isValidWord == true) {
+                if (results.contains(enteredWord)) {
+                    isValidWord = "alreadyEntered";
+                }
+                if (isValidWord == "valid") {
                     results.add(enteredWord);
                     CharSequence text = "Great Job!";
                     Toast great = Toast.makeText(context, text, duration);
+                    mCurrentScore++;
+                    mScore.setText(mCurrentScore.toString());
                     great.show();
+                } else if (isValidWord == "alreadyEntered") {
+                    CharSequence text = "You already entered that word";
+                    Toast wordAlreadyEntered = Toast.makeText(context, text, duration);
+                    wordAlreadyEntered.show();
                 } else {
                     CharSequence text = "Sorry, the word you entered is not valid";
                     Toast sorry = Toast.makeText(context, text, duration);
@@ -118,7 +132,8 @@ public class MainActivity extends AppCompatActivity {
                 for(String s : randomLetterArray) {
                     builder2.append(s);
                 }
-                builder2.insert(6, "\n");
+                builder2.insert(4, "\n");
+                builder2.insert(9, "\n");
                 String randomLetterString = builder2.toString();
                 mRandomLetters.setText(randomLetterString);
             }

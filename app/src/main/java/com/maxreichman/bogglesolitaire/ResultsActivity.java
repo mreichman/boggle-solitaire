@@ -10,6 +10,7 @@ import butterknife.ButterKnife;
 
 public class ResultsActivity extends AppCompatActivity {
     @Bind(R.id.results) TextView mResults;
+    @Bind(R.id.finalScore) TextView mFinalScore;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +19,8 @@ public class ResultsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String results = intent.getStringExtra("results");
+        String score = intent.getStringExtra("score");
         mResults.setText(results);
+        mFinalScore.setText(score);
     }
 }

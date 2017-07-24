@@ -11,11 +11,10 @@
         android:id="@+id/randomLettersTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="ZZZZ\nZZZZ\nZZZZ"
+        android:textSize="24sp"
         android:layout_above="@+id/scramble"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="44dp"
-        android:text="ZZZZZZ\nZZZZZZ"
-        android:textSize="24sp" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/editText"
@@ -52,9 +51,29 @@
         android:id="@+id/scramble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="57dp"
         android:text="Scramble"
-        android:layout_above="@+id/editText"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="16sp"
+        android:layout_below="@+id/timer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score:"
+        android:textSize="16sp"
+        android:layout_alignBaseline="@+id/score"
+        android:layout_alignBottom="@+id/score"
+        android:layout_toLeftOf="@+id/timer"
+        android:layout_toStartOf="@+id/timer" />
 
 </RelativeLayout>
